@@ -9,8 +9,12 @@ about () {
 	echo "  ============================================================ "
 	echo "  \                PlexGuide Benchmark Script                / "
 	echo "  \        System Benchmark & Information & Speedtest        / "
-	echo "  \                  V 1.0.0  (09 Jan 2018)                  / "
-	echo "  \  Current Verson Maintained & Created by: TheCreatorzOne  / "
+	echo "  \                  V 1.0.1  (09 Jan 2018)                  / "
+	echo "  \          Current Verson Created & Maintained by:         / "
+	echo "	\                                                          / "
+	echo "	\            TheCreatorzOne, Deiteq, Admin9705             / "
+	echo "	\         BestBuy-GeekSquad, Low-Class Tech-Support        / "
+	echo "	\                                                          / "
 	echo "  \        Original Github Creation by Sayem Chowdhury       / "
 	echo "  ============================================================ "
 	echo ""
@@ -19,20 +23,20 @@ about () {
 
 prms () {
 	echo "  Arguments:"
-	echo "    $(tput setaf 3)info$(tput sgr0)         - Check basic system information"
-	echo "    $(tput setaf 3)io$(tput sgr0)           - Run I/O test with or w/ cache"
-	echo "    $(tput setaf 3)cdn$(tput sgr0)          - Check download speed from CDN"
-	echo "    $(tput setaf 3)northamercia$(tput sgr0) - Download speed from North America"
-	echo "    $(tput setaf 3)europe$(tput sgr0)       - Download speed from Europe"
-	echo "    $(tput setaf 3)asia$(tput sgr0)         - Download speed from asia"
-	echo "    $(tput setaf 3)a$(tput sgr0)            - Test and check all above things at once"
-	echo "    $(tput setaf 3)b$(tput sgr0)            - System info, CDN speedtest and I/O test"
-	echo "    $(tput setaf 3)ispeed$(tput sgr0)       - Install speedtest-cli (python 2.4-3.4 required)"
-	echo "    $(tput setaf 3)speed$(tput sgr0)        - Check internet speed using speedtest-cli"
-	echo "    $(tput setaf 3)about$(tput sgr0)        - Check about this script"
+	echo "    $(tput setaf 3)-info$(tput sgr0)         - Check basic system information"
+	echo "    $(tput setaf 3)-io$(tput sgr0)           - Run I/O test with or w/ cache"
+	echo "    $(tput setaf 3)-cdn$(tput sgr0)          - Check download speed from CDN"
+	echo "    $(tput setaf 3)-northamercia$(tput sgr0) - Download speed from North America"
+	echo "    $(tput setaf 3)-europe$(tput sgr0)       - Download speed from Europe"
+	echo "    $(tput setaf 3)-asia$(tput sgr0)         - Download speed from asia"
+	echo "    $(tput setaf 3)-a$(tput sgr0)            - Test and check all above things at once"
+	echo "    $(tput setaf 3)-b$(tput sgr0)            - System info, CDN speedtest and I/O test"
+	echo "    $(tput setaf 3)-ispeed$(tput sgr0)       - Install speedtest-cli (python 2.4-3.4 required)"
+	echo "    $(tput setaf 3)-speed$(tput sgr0)        - Check internet speed using speedtest-cli"
+	echo "    $(tput setaf 3)-about$(tput sgr0)        - Check about this script"
 	echo ""
 	echo "  Parameters"
-	echo "    $(tput setaf 3)share$(tput sgr0)         - upload results (default to ubuntu paste)"
+	echo "    $(tput setaf 3)-share$(tput sgr0)         - upload results (default to ubuntu paste)"
 	echo "    Available option for share:"
 	echo "      ubuntu # upload results to ubuntu paste (default)"
 	echo "      haste # upload results to hastebin"
@@ -283,7 +287,7 @@ cdnspeedtest () {
 	DRIVE="drive.google.com"
 	FILE_ID="1EcDdTYwJNBIXx_BL6pzEkjTD_pkCbYni"
 
-	printf " Gdrive   :"  | tee -a $log
+	printf " G-Drive   :"  | tee -a $log
 	curl -c $TMP_COOKIES -o $TMP_FILE -s "https://$DRIVE/uc?id=$FILE_ID&export=download"
 	D_ID=$( grep "confirm=" < $TMP_FILE | awk -F "confirm=" '{ print $NF }' | awk -F "&amp" '{ print $1 }' )
 	C_DL=$( curl -m 4 -Lb $TMP_COOKIES -w '%{speed_download}\n' -o $NULL \
@@ -506,37 +510,37 @@ sharetest() {
 }
 
 case $CMD in
-	'info'|'-information'|'--info'|'--information' )
+	'-info'|'-information'|'--info'|'--information' )
 		systeminfo;;
-	'io'|'-drivespeed'|'--io'|'--drivespeed' )
+	'-io'|'-drivespeed'|'--io'|'--drivespeed' )
 		iotest;;
-	'northamerica'|'-na'|'--northamerica'|'--na' )
+	'-northamerica'|'-na'|'--northamerica'|'--na' )
 		benchinit; northamericaspeedtest;;
-	'europe'|'-eu'|'--europe'|'--eu' )
+	'-europe'|'-eu'|'--europe'|'--eu' )
 		benchinit; europespeedtest;;
-	'exotic'|'--exotic' )
+	'-exotic'|'--exotic' )
 		benchinit; exoticpeedtest;;
-	'asia'|'--asia' )
+	'-asia'|'--asia' )
 		benchinit; asiaspeedtest;;
-	'cdn'|'--cdn' )
+	'-cdn'|'--cdn' )
 		benchinit; cdnspeedtest;;
-	'b'|'--b' )
+	'-b'|'--b' )
 		benchinit; startedon; systeminfo; cdnspeedtest; iotest; finishedon;;
-	'a'|'-all'|'-bench'|'--a'|'--all'|'--bench' )
+	'-a'|'-all'|'-bench'|'--a'|'--all'|'--bench' )
 		benchinit; startedon; systeminfo; cdnspeedtest; northamerciaspeedtest;
 		europespeedtest; exoticpeedtest; asiaspeedtest; iotest; finishedon;;
-	'speed'|'-speedtest'|'-speedcheck'|'--speed'|'--speedtest'|'--speedcheck' )
+	'-speed'|'-speedtest'|'-speedcheck'|'--speed'|'--speedtest'|'--speedcheck' )
 		benchinit; speedtestresults;;
-	'help'|'--help'|'help' )
+	'-help'|'--help'|'help' )
 		prms;;
-	'about'|'--about'|'about' )
+	'-about'|'--about'|'about' )
 		about;;
 	*)
 		howto;;
 esac
 
 case $PRM1 in
-	'share'|'--share'|'share' )
+	'-share'|'--share'|'share' )
 		if [[ $PRM2 == "" ]]; then
 			sharetest ubuntu
 		else
