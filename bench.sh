@@ -10,7 +10,7 @@ about () {
 	echo "  \                PlexGuide Benchmark Script                / "
 	echo "  \        System Benchmark & Information & Speedtest        / "
 	echo "  \                  V 1.0.0  (09 Jan 2018)                  / "
-  echo "  \  Current Verson Maintained & Created by: TheCreatorzOne  / "
+	echo "  \  Current Verson Maintained & Created by: TheCreatorzOne  / "
 	echo "  \        Original Github Creation by Sayem Chowdhury       / "
 	echo "  ============================================================ "
 	echo ""
